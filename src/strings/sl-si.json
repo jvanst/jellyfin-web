@@ -13,7 +13,7 @@
   "CategoryPlugin": "Vticnik",
   "CategorySystem": "Sistem",
   "CategoryUser": "Uporabnik",
-  "FeatureRequiresJellyfinPremiere": "Uporaba te funkcionalnosti zahteva aktivno Jellyfin Premiere narocnino.",
+  "FeatureRequiresPilferTVPremiere": "Uporaba te funkcionalnosti zahteva aktivno PilferTV Premiere narocnino.",
   "FolderTypeMixed": "Mesane vsebine",
   "FolderTypeTvShows": "TV",
   "HeaderAddToCollection": "Dodaj v Zbirko",
@@ -115,5 +115,5 @@
   "ViewTypeMusicFavoriteAlbums": "Priljubljeni Albumi",
   "ViewTypeMusicFavoriteArtists": "Priljubljeni Izvajalci",
   "ViewTypeMusicFavoriteSongs": "Priljubljene skladbe",
-  "WelcomeToProject": "Dobrodosli v Jellyfin!"
+  "WelcomeToProject": "Dobrodosli v PilferTV!"
 }

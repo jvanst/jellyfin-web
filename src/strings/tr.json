@@ -152,9 +152,9 @@
   "LabelCurrentPassword": "Kullanımdaki şifre:",
   "LabelDay": "Gün:",
   "LabelDisplayMissingEpisodesWithinSeasons": "Sezondaki kayıp bölümleri göster",
-  "LabelDisplayMissingEpisodesWithinSeasonsHelp": "TV kütüphaneleri için Jellyfin Sunucusu kurulumunda bunun aktif edilmiş olması gerekir.",
+  "LabelDisplayMissingEpisodesWithinSeasonsHelp": "TV kütüphaneleri için PilferTV Sunucusu kurulumunda bunun aktif edilmiş olması gerekir.",
   "LabelDownloadInternetMetadata": "İnternetten İçerik Yükleyin",
-  "LabelDownloadInternetMetadataHelp": "Jellyfin sunucusu medya ile ilgili zengin sunumlar için internetten bilgi indirebilir.",
+  "LabelDownloadInternetMetadataHelp": "PilferTV sunucusu medya ile ilgili zengin sunumlar için internetten bilgi indirebilir.",
   "LabelEnableDlnaServer": "DLNA Sunucusu etkin",
   "LabelFinish": "Bitir",
   "LabelFolderType": "Klasör Türü:",
@@ -368,5 +368,5 @@
   "Users": "Kullanıcılar",
   "VersionNumber": "Versiyon {0}",
   "Wednesday": "Çarşamba",
-  "WelcomeToProject": "Jellyfin'ye Hoş Geldiniz!"
+  "WelcomeToProject": "PilferTV'ye Hoş Geldiniz!"
 }

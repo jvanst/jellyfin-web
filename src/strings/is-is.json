@@ -28,7 +28,7 @@
   "HeaderPlayAll": "Spila allt",
   "HeaderSync": "Samþætting",
   "HeaderTV": "Sjónvarp",
-  "HeaderTermsOfService": "Skilmálar Jellyfin",
+  "HeaderTermsOfService": "Skilmálar PilferTV",
   "HeaderVideo": "Myndband",
   "LabelConfigureSettings": "Breyta stillingum",
   "LabelContentType": "Tegund efnis:",
@@ -54,5 +54,5 @@
   "TabNotifications": "Tilkynningar",
   "TabPassword": "Lykilorð",
   "TabPlaylist": "Afspilunar listi",
-  "WelcomeToProject": "Velkomin/n í Jellyfin"
+  "WelcomeToProject": "Velkomin/n í PilferTV"
 }
