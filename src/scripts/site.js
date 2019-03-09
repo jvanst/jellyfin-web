@@ -32,6 +32,9 @@ function pageIdOn(eventName, id, fn) {
     })
 }
 var Dashboard = {
+        allowPluginPages: function(pluginId) {
+            return true;
+        },
         getCurrentUser: function() {
             return window.ApiClient.getCurrentUser(!1)
         },
@@ -56,14 +59,7 @@ var Dashboard = {
         },
         logout: function() {
             ConnectionManager.logout().then(function() {
-                var loginPage;
-                if (AppInfo.isNativeApp) {
-                    loginPage = "selectserver.html";
-                    window.ApiClient = null;
-                } else {
-                    loginPage = "login.html";
-                }
-                Dashboard.navigate(loginPage);
+                Dashboard.navigate("login.html");
             })
         },
         getConfigurationPageUrl: function(name) {
@@ -150,8 +146,14 @@ var Dashboard = {
 ! function() {
     "use strict";
 
+    function initializeApiClient(apiClient) {
+        "cordova" !== self.appMode && "android" !== self.appMode || (apiClient.getAvailablePlugins = function() {
+            return Promise.resolve([])
+        })
+    }
+
     function onApiClientCreated(e, newApiClient) {
-        window.$ && ($.ajax = newApiClient.ajax)
+        initializeApiClient(newApiClient), window.$ && ($.ajax = newApiClient.ajax)
     }
 
     function defineConnectionManager(connectionManager) {
@@ -1240,9 +1242,9 @@ var Dashboard = {
             }, appRouter.showVideoOsd = function() {
                 return Dashboard.navigate("videoosd.html")
             }, appRouter.showSelectServer = function() {
-                Dashboard.navigate(AppInfo.isNativeApp ? "selectserver.html" : "login.html")
+                Dashboard.navigate("login.html")
             }, appRouter.showWelcome = function() {
-                Dashboard.navigate(AppInfo.isNativeApp ? "selectserver.html" : "login.html")
+                Dashboard.navigate("login.html")
             }, appRouter.showSettings = function() {
                 Dashboard.navigate("mypreferencesmenu.html")
             }, appRouter.showGuide = function() {

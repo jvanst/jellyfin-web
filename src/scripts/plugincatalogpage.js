@@ -3,6 +3,7 @@ define(["loading", "libraryMenu", "globalize", "cardStyle", "emby-linkbutton", "
 
     function reloadList(page) {
         loading.show();
+        query.IsAppStoreSafe = true;
         var promise1 = ApiClient.getAvailablePlugins(query);
         var promise2 = ApiClient.getInstalledPlugins();
         Promise.all([promise1, promise2]).then(function (responses) {
@@ -15,8 +16,13 @@ define(["loading", "libraryMenu", "globalize", "cardStyle", "emby-linkbutton", "
         });
     }
 
+    function populateList(options) {
+        populateListInternal(options);
+    }
+
     function getHeaderText(category) {
         category = category.replace(" ", "");
+
         if ("Channel" === category) {
             category = "Channels";
         } else if ("Theme" === category) {
@@ -30,7 +36,11 @@ define(["loading", "libraryMenu", "globalize", "cardStyle", "emby-linkbutton", "
         return globalize.translate(category);
     }
 
-    function populateList(options) {
+    function isUserInstalledPlugin(plugin) {
+        return -1 === ["02528C96-F727-44D7-BE87-9EEF040758C3", "0277E613-3EC0-4360-A3DE-F8AF0AABB5E9", "4DCB591C-0FA2-4C5D-A7E5-DABE37164C8B"].indexOf(plugin.guid);
+    }
+
+    function populateListInternal(options) {
         var availablePlugins = options.availablePlugins;
         var installedPlugins = options.installedPlugins;
         var allPlugins = availablePlugins.filter(function (plugin) {
@@ -103,7 +113,7 @@ define(["loading", "libraryMenu", "globalize", "cardStyle", "emby-linkbutton", "
                 }
 
                 return 0;
-            });
+            }).filter(isUserInstalledPlugin);
             html += '<div class="itemsContainer vertical-wrap">';
             var limit = screen.availWidth >= 1920 ? 15 : 12;
 
@@ -205,14 +215,11 @@ define(["loading", "libraryMenu", "globalize", "cardStyle", "emby-linkbutton", "
 
     var query = {
         TargetSystems: "Server",
-        IsAppStoreSafe: true,
         IsAdult: false
     };
-
     window.PluginCatalog = {
         renderCatalog: populateList
     };
-
     return function (view, params) {
         view.querySelector("#selectSystem").addEventListener("change", function () {
             query.TargetSystems = this.value;

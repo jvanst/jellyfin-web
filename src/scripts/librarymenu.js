@@ -196,13 +196,13 @@ define(["dom", "layoutManager", "inputManager", "connectionManager", "events", "
         html += '<h3 class="sidebarHeader">';
         html += globalize.translate("HeaderUser");
         html += "</h3>";
-        if (user.localUser) {
-            html += '<a is="emby-linkbutton" class="navMenuOption lnkMediaFolder lnkMySettings" href="mypreferencesmenu.html"><i class="md-icon navMenuOptionIcon">settings</i><span class="navMenuOptionText">' + globalize.translate("ButtonSettings") + "</span></a>";
-            html += '<a is="emby-linkbutton" class="navMenuOption lnkMediaFolder" data-itemid="selectserver" href="selectserver.html?showuser=1"><i class="md-icon navMenuOptionIcon">wifi</i><span class="navMenuOptionText">' + globalize.translate("ButtonSelectServer") + "</span></a>";
-            if (!user.localUser.EnableAutoLogin) {
-                html += '<a is="emby-linkbutton" class="navMenuOption lnkMediaFolder btnLogout" data-itemid="logout" href="#"><i class="md-icon navMenuOptionIcon">exit_to_app</i><span class="navMenuOptionText">' + globalize.translate("ButtonSignOut") + "</span></a>";
-            }
-        }
+        // if (user.localUser) {
+        //     html += '<a is="emby-linkbutton" class="navMenuOption lnkMediaFolder lnkMySettings" href="mypreferencesmenu.html"><i class="md-icon navMenuOptionIcon">settings</i><span class="navMenuOptionText">' + globalize.translate("ButtonSettings") + "</span></a>";
+        //     html += '<a is="emby-linkbutton" class="navMenuOption lnkMediaFolder" data-itemid="selectserver" href="selectserver.html?showuser=1"><i class="md-icon navMenuOptionIcon">wifi</i><span class="navMenuOptionText">' + globalize.translate("ButtonSelectServer") + "</span></a>";
+        //     if (!user.localUser.EnableAutoLogin) {
+        //         html += '<a is="emby-linkbutton" class="navMenuOption lnkMediaFolder btnLogout" data-itemid="logout" href="#"><i class="md-icon navMenuOptionIcon">exit_to_app</i><span class="navMenuOptionText">' + globalize.translate("ButtonSignOut") + "</span></a>";
+        //     }
+        // }
         html += "</div>";
 
         // add buttons to navigation drawer
@@ -386,13 +386,16 @@ define(["dom", "layoutManager", "inputManager", "connectionManager", "events", "
     function addPluginPagesToMainMenu(links, pluginItems, section) {
         for (var i = 0, length = pluginItems.length; i < length; i++) {
             var pluginItem = pluginItems[i];
-            if (pluginItem.EnableInMainMenu && pluginItem.MenuSection === section) {
-                links.push({
-                    name: pluginItem.DisplayName,
-                    icon: pluginItem.MenuIcon || "folder",
-                    href: Dashboard.getConfigurationPageUrl(pluginItem.Name),
-                    pageUrls: [Dashboard.getConfigurationPageUrl(pluginItem.Name)]
-                });
+
+            if (Dashboard.allowPluginPages(pluginItem.PluginId)) {
+                if (pluginItem.EnableInMainMenu && pluginItem.MenuSection === section) {
+                    links.push({
+                        name: pluginItem.DisplayName,
+                        icon: pluginItem.MenuIcon || "folder",
+                        href: Dashboard.getConfigurationPageUrl(pluginItem.Name),
+                        pageUrls: [Dashboard.getConfigurationPageUrl(pluginItem.Name)]
+                    });
+                }
             }
         }
     }

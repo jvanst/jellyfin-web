@@ -138,7 +138,7 @@
 }
 
 .osdVolumeSliderContainer {
-    width: 9em;
+    width: 6.5em;
     -webkit-box-flex: 1;
     -webkit-flex-grow: 1;
     flex-grow: 1
@@ -244,13 +244,8 @@
     }
 }
 
-@media all and (max-width:43em) {
+@media all and (max-width:37.5em) {
     .videoOsdBottom .volumeButtons {
-        display: none !important
-    }
-}
-@media all and (max-width:50em) {
-    .videoOsdBottom .btnFastForward, .videoOsdBottom .btnRewind {
         display: none !important
     }
 }

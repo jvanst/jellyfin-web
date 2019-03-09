@@ -1,11 +1,10 @@
 {
 
-    "name": "Emby",
-    "_comment": "This should be PilferTV, but that breaks apps...",
-    "description": "PilferTV: the Free Software Media System.",
+    "name": "PilferTV",
+    "description": "PilferTV",
     "lang": "en-US",
     "display": "minimal-ui",
-    "short_name": "Emby",
+    "short_name": "PilferTV",
     "start_url": "/web/index.html",
     "theme_color": "#101010",
     "icons": [{
